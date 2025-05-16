@@ -17,15 +17,10 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install buildozer dependencies
+    - name: Install build tools and dependencies
       run: |
         sudo apt update
-        sudo apt install -y python3-pip build-essential git zip unzip openjdk-17-jdk
-        sudo apt install -y git
-        sudo apt install -y libncurses5 libffi-dev libssl-dev libsqlite3-dev
-        pip install --upgrade pip
-        pip install buildozer cython
-
+        sudo apt install -y python3-pip build-essential git zip unzip openjdk-17-jdk libffi-dev libssl-dev libsqlite3-dev
 
     - name: Download Android SDK cmdline-tools
       run: |
