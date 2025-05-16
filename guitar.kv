@@ -1,0 +1,99 @@
+#:kivy 2.1.0
+
+<RootWidget>:
+    orientation: "vertical"
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        size_hint_y: None
+        height: '40dp'
+        spacing: 10
+
+        Label:
+            id: status_label
+            text: "🎯 目标音"
+            font_size: '16sp'
+
+    GuitarFretboard:
+        id: fretboard
+        size_hint_y: 0.8
+
+    BoxLayout:
+        size_hint_y: None
+        height: '90dp'
+        spacing: 10
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 5
+            Label:
+                text: "选择目标音"
+                size_hint_y: None
+                height: '30dp'
+
+            GridLayout:
+                cols: 4
+                size_hint_y: None
+                height: '120dp'
+                spacing: 5
+
+                Button:
+                    text: "C"
+                    on_release: fretboard.switch_target("C")
+                Button:
+                    text: "D"
+                    on_release: fretboard.switch_target("D")
+                Button:
+                    text: "E"
+                    on_release: fretboard.switch_target("E")
+                Button:
+                    text: "F"
+                    on_release: fretboard.switch_target("F")
+                Button:
+                    text: "G"
+                    on_release: fretboard.switch_target("G")
+                Button:
+                    text: "A"
+                    on_release: fretboard.switch_target("A")
+                Button:
+                    text: "B"
+                    on_release: fretboard.switch_target("B")
+                Button:
+                    text: "随机"
+                    on_release: fretboard.switch_target("随机")
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 5
+            Label:
+                text: "选择模式"
+                size_hint_y: None
+                height: '30dp'
+
+            BoxLayout:
+                spacing: 10
+
+                Button:
+                    text: "自由模式"
+                    on_release: fretboard.switch_mode("自由模式")
+                Button:
+                    text: "限制模式"
+                    on_release: fretboard.switch_mode("限制模式")
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 5
+            Label:
+                text: "操作"
+                size_hint_y: None
+                height: '30dp'
+
+            BoxLayout:
+                spacing: 10
+                Button:
+                    text: "下一题"
+                    on_release: fretboard.set_random_target_note()
+                Button:
+                    text: "清除标记"
+                    on_release: fretboard.clear_markers()
