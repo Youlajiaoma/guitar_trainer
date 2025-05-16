@@ -25,9 +25,19 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython
 
+    - name: List Android SDK dirs for debug
+      run: |
+        ls -l $HOME/.buildozer/android/platform/android-sdk/
+        ls -l $HOME/.buildozer/android/platform/android-sdk/tools/bin/
+        ls -l $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/
+        ls -l $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/tools/bin/
+
     - name: Accept Android SDK licenses
       run: |
+        yes | $HOME/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --licenses || \
+        yes | $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/tools/bin/sdkmanager --licenses || \
         yes | $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+
 
     - name: Build APK
       run: |
